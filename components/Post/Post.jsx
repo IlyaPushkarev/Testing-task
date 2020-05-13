@@ -1,18 +1,53 @@
 import React from "react";
+import styled from "styled-components";
+
+const BoxCreate = styled.div`
+    width:80%;
+    margin: 0 auto;
+    font-size: 20px;
+    background: #f3f3f3;
+`;
+const Header = styled.div`
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+`;
+const Body = styled.div`
+display: flex;
+flex-direction: column;
+`;
+const BodyItem = styled.div`
+margin-bottom: 2rem;
+text-align: center;
+`;
+const Input = styled.input`
+width: 80%;
+margin: 0 auto;
+ color: palevioletred;
+  font-size: 20px;
+  padding: 5px 20px;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+  outline: none;
+`
+const Button = styled.button`
+  color: palevioletred;
+  font-size: 20px;
+  padding: 5px 20px;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+`;
 
 class  Post extends React.Component{
     state = {
         postTitle: "",
         postBody: ""
     }
-    // let newPostTitle = React.createRef();
-    // let title = newPostTitle.current.value;
-    // let newPostBody = React.createRef();
-    // let body = newPostBody.current.value;
 
     onChangePostTitle= (e)=>{
         let title = e.currentTarget.value;
-        // props.onUpdatePost(title)
         this.setState({
             postTitle: title
         })
@@ -20,36 +55,47 @@ class  Post extends React.Component{
 
     onChangePostBody= (e)=>{
         let body = e.currentTarget.value;
-        // props.onUpdatePost(this.props.title,body)
         this.setState({
             postBody: body
         })
     }
 
     onAddPost = ()=>{
-        console.log(this.state.postTitle);
-        console.log(this.state.postBody);
-
+        if(this.state.postTitle==="" || this.state.postBody===""){
+            alert("Insert field");
+        }
         this.props.addNewPost(this.state.postTitle,this.state.postBody);
-    }
+
+        this.state.postTitle="";
+        this.state.postBody="";
+    };
 
     render() {
         return(
-            <div>
-                <h1>Create new post</h1>
-                <input
-                    type="text"
-                    placeholder="Insert a title"
-                    // ref={newPostTitle}
-                    onChange={this.onChangePostTitle}
-                />
-                <textarea
-                    placeholder="Create a post"
-                    // ref={newPostBody}
-                    onChange={this.onChangePostBody}
-                ></textarea>
-                <button onClick={this.onAddPost}>ADD POST</button>
-            </div>
+            <BoxCreate>
+                <Header>Create new post</Header>
+                <Body>
+                    <BodyItem>
+                        <Input
+                            type="text"
+                            placeholder="Insert a title"
+                            onChange={this.onChangePostTitle}
+                        />
+                    </BodyItem>
+                    <BodyItem>
+                        <Input
+                            placeholder="Create a post"
+                            onChange={this.onChangePostBody}
+                        ></Input>
+                    </BodyItem>
+                    <BodyItem>
+                        <Button onClick={this.onAddPost}>ADD POST</Button>
+                    </BodyItem>
+
+
+
+                </Body>
+            </BoxCreate>
         )
     }
 }
