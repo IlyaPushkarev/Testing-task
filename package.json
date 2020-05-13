@@ -4,8 +4,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "prettier": "prettier — write ../**/*"
+    "start": "next start"
   },
   "dependencies": {
     "@types/react-redux": "^7.1.8",
@@ -24,7 +23,11 @@
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
     "@types/styled-components": "5.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
     "babel-plugin-styled-components": "^1.10.0",
+    "eslint": "^7.0.0",
+    "eslint-plugin-react": "^7.20.0",
     "typescript": "3.5.2"
   },
   "license": "ISC"

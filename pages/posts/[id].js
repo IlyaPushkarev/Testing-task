@@ -29,7 +29,7 @@ const Post = ()=> {
     let {id} = router.query;
 
     useEffect(() => {
-        postsAPI.getCurrentPost(id)
+         postsAPI.getCurrentPost(id)
             .then(res=>{
                 if( JSON.stringify(post) !== JSON.stringify(res.data)){
                     setPost(res.data);

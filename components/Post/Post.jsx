@@ -66,8 +66,10 @@ class  Post extends React.Component{
         }
         this.props.addNewPost(this.state.postTitle,this.state.postBody);
 
-        this.state.postTitle="";
-        this.state.postBody="";
+        this.setState({
+            postTitle: "",
+            postBody: ""
+        })
     };
 
     render() {
@@ -77,6 +79,7 @@ class  Post extends React.Component{
                 <Body>
                     <BodyItem>
                         <Input
+                            value={this.state.postTitle}
                             type="text"
                             placeholder="Insert a title"
                             onChange={this.onChangePostTitle}
@@ -84,6 +87,8 @@ class  Post extends React.Component{
                     </BodyItem>
                     <BodyItem>
                         <Input
+                            value={this.state.postBody}
+                            type="text"
                             placeholder="Create a post"
                             onChange={this.onChangePostBody}
                         ></Input>
